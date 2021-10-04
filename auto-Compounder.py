@@ -66,7 +66,7 @@ pit_abi = abiContract
 pit = web3.eth.contract(pit_address, abi=pit_abi)
 #deposit = pit.functions.userInfo(0, account.address).call()[0]
 stax = pit.functions.staxMiners(account.address).call()
-logging.info(f'\tMy current yeti: {stax}')
+logging.info(f'\tMy current minters: {stax}')
 
 async def check_for_compound(poll_interval):
     global deposit
@@ -83,7 +83,7 @@ async def check_for_compound(poll_interval):
             txn = execute_transaction(run_compound, account)
             print(web3.eth.waitForTransactionReceipt(txn))     
             stax = pit.functions.staxMiners(account.address).call()
-            logging.info(f'\tMy current miners: {stax}')
+            logging.info(f'\tMy current minters: {stax}')
             
         await asyncio.sleep(poll_interval)
 
